@@ -14,6 +14,11 @@ class NewsController extends Controller
     	return view('user.news',compact('news'));
     }
 
+    public function indexAdmin(){
+        $news=News::all();
+        return view('admin.news',compact('news'));
+    }
+
     public function show(News $new){
         if($new->status==1)
             return view('user.view',['new'=>$new]);

@@ -19,29 +19,22 @@
 						<th>Действия</th>
 					</tr>
 				</thead>
-				<tfoot>
-					<tr>
-						<th>Название</th>
-						<th>Содержание</th>
-						<th>Действия</th>
-					</tr>
-				</tfoot>
 				<tbody>
-					@foreach ($news as $new)
-					<tr>
-						<td>{{Str::limit($new->title,30,'(...)')}}</td>
-						<td>{{Str::limit($new->body,60,'(...)')}}</td>
-						<td>							
-							<a href="#"><i class="fas fa-eye"></i></a>
-							<a href="#"><i class="fas fa-edit"></i></a>
-							<a href="#"><i class="fas fa-trash"></i></a>
-
-						</td>
-
-					</tr>	
-					@endforeach
-					
-
+					@isset ($news)
+						@forelse ($news as $new)
+							<tr>
+								<td>{{Str::limit($new->title,30,'(...)')}}</td>
+								<td>{!!Str::limit($new->body,60,'(...)')!!}</td>
+								<td>							
+									<a href="#"><i class="fas fa-eye"></i></a>
+									<a href="#"><i class="fas fa-edit"></i></a>
+									<a href="#"><i class="fas fa-trash"></i></a>
+								</td>
+							</tr>	
+						@empty 
+							<p>Нет новостей</p>
+						@endforelse
+					@endisset
 				</tbody>
 			</table>
 		</div>

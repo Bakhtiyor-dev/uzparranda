@@ -15,27 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 //User routes
 Route::get('/','IndexController@lastNews');
-Route::get('/contact', function () {
-    return view('user.contact');
-});
+Route::view('/contact','user.contact');
 Route::get('/news','NewsController@index');
 Route::get('/view/{new}','NewsController@show');
-Route::get('/view', function () {
-    return view('user.view');
-});
+Route::view('/view','user.view');
 Route::post('/feedback','FeedbackController@store');
 
-
 //Admin routes
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-
-Route::get('/admin/feedback','FeedbackController@index');
+Route::view('/admin','admin.index')->name('admin');
+Route::get('/admin/feedback','FeedbackController@index')->name('feedback');
 Route::delete('/admin/feedback','FeedbackController@destroy');
-
-Route::get('/admin/news','NewsController@index');
-Route::get('/admin/news/add',function(){
-	return view('admin.add');
-});
+Route::get('/admin/news','NewsController@indexAdmin')->name('news');
+Route::view('/admin/news/add','admin.add');
 Route::post('/admin/news/add','NewsController@store');
+
