@@ -7,24 +7,40 @@ use App\Models\Feedback;
 
 class FeedbackController extends Controller
 {	
+
+    public function index(){
+        $messages=Feedback::orderBy('created_at','desc')->get();
+        return view('admin.feedback',compact('messages'));
+    }
+    
     public function store(Request $request){
-    	
-    	$validated=$request->validate([
+    	//Validation
+    	$this->validate($request,
+        [
     		'name'=>'required|max:50',
     		'email'=>'required|email',
     		'phone'=>'required',
     		'org_name'=>'required',
     		'body'=>'required'
     	]);
+        //Saving message
+        Feedback::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone_number'=>$request->phone,
+            'org_name'=>$request->org_name,
+            'body'=>$request->body,
+        ]);
 
-    	$feedback=new Feedback;
-    	$feedback->name=$validated['name'];
-    	$feedback->email=$validated['email'];
-    	$feedback->phone_number=$validated['phone'];
-    	$feedback->org_name=$validated['org_name'];
-    	$feedback->body=$validated['body'];
-    	$feedback->save();
     	return back()->with('success','true');
     	
     }
+
+    //Delete selected messages
+    public function destroy(Request $request){
+        $ids=explode(',',$request->feedbacks);
+        Feedback::whereIn('id',$ids)->delete();
+        return back();
+    } 
+
 }

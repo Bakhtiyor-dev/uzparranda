@@ -13,24 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
+//User routes
+Route::get('/','IndexController@lastNews');
 Route::get('/contact', function () {
-    return view('contact');
+    return view('user.contact');
 });
-
-Route::get('/news', function () {
-    return view('news');
-});
-
+Route::get('/news','NewsController@index');
+Route::get('/view/{new}','NewsController@show');
 Route::get('/view', function () {
-    return view('view');
-});
-
-
-Route::get('/admin', function () {
-    return view('admin');
+    return view('user.view');
 });
 Route::post('/feedback','FeedbackController@store');
+
+
+//Admin routes
+Route::get('/admin', function () {
+    return view('admin.index');
+});
+
+Route::get('/admin/feedback','FeedbackController@index');
+Route::delete('/admin/feedback','FeedbackController@destroy');
+
+Route::get('/admin/news','NewsController@index');
+Route::get('/admin/news/add',function(){
+	return view('admin.add');
+});
+Route::post('/admin/news/add','NewsController@store');
