@@ -1,3 +1,5 @@
+@isset ($data)  
+@if(!empty($data))
 <div class="about">
 		<div class="container">
 			<div class="row">
@@ -6,8 +8,7 @@
 					<hr class="bold">
 				</div>
 				<div class="col-md-6">
-					<b>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. </b> <br>
-					Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. 
+					{!!$data->body!!} 
 				</div>
 				<div class="col-md-3">
 					<h4>Файзиев Мансур</h4>
@@ -17,3 +18,7 @@
 			</div>
 		</div>
 	</div>
+@else
+<p>Пусто...</p>	
+@endif
+@endisset

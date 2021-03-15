@@ -14,13 +14,13 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="/about">Уюшма хакида</a></li>
+				<li><a href="/pages/about">Уюшма хакида</a></li>
 				<li><a href="/news">Янгиликлар</a></li>
 				<li><a href="/events">Вокеалар</a></li>
 				<li><a href="/articles">Маколалар</a></li>
-				<li><a href="/law">Конунчилик</a></li>
-				<li><a href="/inheritance">Наслчилик</a></li>
-				<li><a href="/zoovet">Ветеринария</a></li>
+				<li><a href="/pages/law">Конунчилик</a></li>
+				<li><a href="/pages/inheritance">Наслчилик</a></li>
+				<li><a href="/pages/zoovet">Ветеринария</a></li>
 				<li><a href="/products">Махсулотлар</a></li>
 				<li><a href="/food">Озукалар</a></li>
 

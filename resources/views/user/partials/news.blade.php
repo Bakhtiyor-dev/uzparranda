@@ -1,17 +1,6 @@
 <div class="news">
 	<div class="container">
-		<div class="col-md-3">
-			<div class="widget">
-				<ul class="ser_list">
-					<li><a href="#"><i class="fa fa-check-square-o"></i>Фаолият</a></li>
-					<li><a href="#"><i class="fa fa-check-square-o"></i>Низом</a></li>
-					<li><a href="#"><i class="fa fa-check-square-o"></i>Хизматлар</a></li>
-				</ul>
-			</div>
-			<div class="widget">
-				<img src="img/calendaar.jpg" alt="">
-			</div>
-		</div>
+		@include('user.partials.widgets')
 		<div class="col-md-9">
 			<div class="row">
 			@isset ($lastNews)

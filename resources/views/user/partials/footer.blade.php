@@ -59,7 +59,7 @@
 		<div class="bottom">
 			<div class="row">
 				<div class="col-md-3 text-left">
-					© 2017 Uzparranda.uz.
+					© 2021 Uzparranda.uz.
 				</div>
 				<div class="col-md-6">
 					<ul class="social">
@@ -69,9 +69,7 @@
 						<li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
 					</ul>
 				</div>
-				<div class="col-md-3 text-right">
-					<a href="#">Сайт яратилди MD.uz</a>
-				</div>
+				
 			</div>
 		</div>
 	</div>

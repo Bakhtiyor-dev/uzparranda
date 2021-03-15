@@ -5,8 +5,8 @@
 <form action="/admin/feedback" method="post" class="float-right">
 	@csrf
 	@method('DELETE')
-	<input type="hidden" id="ids_for_delete"  name="feedbacks">
-	<button type="submit" class="btn btn-danger m-2" >Удалить отмеченные</button>
+	<input type="hidden" id="ids_for_delete"  name="feedbacks" >
+	<button type="submit" class="btn btn-danger m-2" id="delete_btn" disabled>Удалить отмеченные</button>
 </form>		
 
 
@@ -111,6 +111,14 @@
 				add(id);
 			else
 				remove(id);
+
+			if($('#ids_for_delete').val()==''){
+				$('#delete_btn').attr('disabled','disabled');
+			}else{
+				$('#delete_btn').removeAttr('disabled');
+			}
 		}
+			
+
 	</script>
 @endsection
