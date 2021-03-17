@@ -15,7 +15,7 @@
 </div>
 @endif
 
-<h3>Добавить {{$name}}</h3>
+<h3>Добавить {{$name}} </h3>
 <form action="/admin/{{$table}}/add" method="post" class="form" enctype="multipart/form-data">
 	@csrf
 	<label for="title">Название:</label>
