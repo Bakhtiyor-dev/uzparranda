@@ -8,8 +8,6 @@
 	<input type="hidden" id="ids_for_delete"  name="feedbacks" >
 	<button type="submit" class="btn btn-danger m-2" id="delete_btn" disabled>Удалить отмеченные</button>
 </form>		
-
-
 <div class="table-responsive bg-light">
 	<table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
 		<thead>
@@ -26,7 +24,7 @@
 			@isset ($messages)
 			@forelse($messages as $message)
 			<!-- row -->
-			<tr class="border-left-primary">
+			<tr class="border-left-primary" id="{{$message->id}}">
 				<!-- label -->
 				<td class="pl-3">
 					<div class="custom-control custom-checkbox">
@@ -40,17 +38,17 @@
 				</td>
 				<!-- star -->
 				<td>
-					<span class="mb-0 text-muted">{{$message->name}}</span>
+					<span class="mb-0 text-dark">{{$message->name}}</span>
 				</td>
 				<td>
-					<span class="mb-0 text-muted">{{$message->email}}</span>
+					<span class="mb-0 text-dark">{{$message->email}}</span>
 				</td>
 				<td>
-					<span class="mb-0 text-muted">{{$message->phone_number}}</span>
+					<span class="mb-0 text-dark">{{$message->phone_number}}</span>
 				</td>
 
 				<td>
-					<span class="mb-0 text-muted">{{$message->org_name}}</span>
+					<span class="mb-0 text-dark">{{$message->org_name}}</span>
 				</td>
 				<!-- Message -->
 				<td>
@@ -90,6 +88,9 @@
 	</table>
 </div>
 
+<div class="float-right">
+{{$messages->links('pagination::bootstrap-4')}}
+</div>
 @endsection
 @section('scripts')
 	<script>

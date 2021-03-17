@@ -14,7 +14,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <h6><a href='admin/feedback'>Cообщения от пользователей</a></h6>
+                            <h6><a href='/admin/feedback'>Cообщения от пользователей</a></h6>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -24,12 +24,12 @@
             </div>
         </div>
 
-        <div class="card border-left-warning shadow mt-2 py-2">
+        {{-- <div class="card border-left-warning shadow mt-2 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <h6><a href='admin/feedback'>Данные сайта</a></h6>
+                            <h6><a href='admin/website-data'>Данные сайта</a></h6>
                         </div>
                      
                     </div>
@@ -39,13 +39,13 @@
                 </div>
             </div>
         </div>
-
+ --}}
         <div class="card border-left-warning shadow mt-2 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <h6><a href='admin/feedback'>Продукты</a></h6>
+                            <h6><a href='/admin/products'>Продукты</a></h6>
                         </div>
                      
                     </div>
@@ -61,7 +61,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            <h6><a href='admin/feedback'>Кормы</a></h6>
+                            <h6><a href='/admin/food'>Кормы</a></h6>
                         </div>
                      
                     </div>

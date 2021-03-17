@@ -26,24 +26,13 @@
 							@endforelse
 						@endisset	
 					</div>
-					<ul class="navi">
-						<li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">...</a></li>
-						<li><a href="#">13</a></li>
-						<li><a href="#">14</a></li>
-						<li><a href="#">15</a></li>
-						<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-					</ul>
+					{{$news->links('user.partials.pagination')}}
 				</div>
 				@include('user.partials.widgets')
 			</div>
 		</div>
 	</div>
 </div>
-
 @include('user.partials.clients')
 @include('user.partials.links')
 

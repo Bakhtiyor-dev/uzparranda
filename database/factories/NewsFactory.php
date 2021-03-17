@@ -22,8 +22,10 @@ class NewsFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>$this->faker->text,
-            'body'=>$this->faker->paragraph 
+            'title'=>$this->faker->realText($maxNbChars=50),
+            'image'=>'https://picsum.photos/200/300?random='.$this->faker->randomDigit,
+            'status'=>true,
+            'body'=>$this->faker->realText() 
         ];
     }
 }

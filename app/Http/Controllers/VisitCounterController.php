@@ -13,7 +13,7 @@ class VisitCounterController extends Controller
     	$response=[];
     	foreach ($this->months as $month) {
     		if($data=Visit::where('month',$month)->first())
-    			$response[]=$data->count;		
+                $response[]=$data->count;		
     		else
     			$response[]=0;
     	}

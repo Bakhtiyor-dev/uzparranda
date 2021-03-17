@@ -20,6 +20,7 @@ class CreateFeedbackTable extends Migration
             $table->string('phone_number');
             $table->string('org_name');
             $table->text('body');
+            $table->boolean('read')->default(false);
             $table->timestamps();
         });
     }

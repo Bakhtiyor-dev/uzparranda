@@ -1,3 +1,8 @@
+<?php
+use App\Models\Feedback;
+    \Carbon\Carbon::setLocale('ru');   
+    $feedbacks=Feedback::where('read',0)->take(5)->get();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,10 +18,8 @@
 
     <!-- Custom fonts for this template-->
     <link href="/fonts/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     @yield('customStyles')
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
@@ -33,7 +36,7 @@
                 <div class="sidebar-brand-text mx-3">Админ</div>
             </a>
 
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -50,21 +53,21 @@
                     <span>Сообщения</span></a>
             </li>
 
-            <li class="nav-item {{Route::is('feedback')?'active':''}}">
-                <a class="nav-link" href="/admin/feedback">
-                    <i class="fas fa-table"></i>
-                    <span>Данные сайта</span></a>
+            {{-- <li class="nav-item {{Route::is('feedback')?'active':''}}">
+            <a class="nav-link" href="/admin/website-data">
+                <i class="fas fa-table"></i>
+                <span>Данные сайта</span></a>
             </li>
 
-            <li class="nav-item {{Route::is('feedback')?'active':''}}">
-                <a class="nav-link" href="/admin/feedback">
+            --}} <li class="nav-item {{Route::is('products')?'active':''}}">
+                <a class="nav-link" href="/admin/products">
                     <i class="fas fa-dolly"></i>
                     <span>Продукты</span></a>
             </li>
 
 
-            <li class="nav-item {{Route::is('feedback')?'active':''}}">
-                <a class="nav-link" href="/admin/feedback">
+            <li class="nav-item {{Route::is('food')?'active':''}}">
+                <a class="nav-link" href="/admin/food">
                     <i class="fas fa-carrot"></i>
                     <span>Кормы</span></a>
             </li>
@@ -79,37 +82,45 @@
                     <span>Новости</span></a>
             </li>
 
+            <li class="nav-item {{Route::is('articles')?'active':''}}">
+                <a class="nav-link" href="/admin/articles">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Статьи</span></a>
+            </li>
+
+            <li class="nav-item {{Route::is('events')?'active':''}}">
+                <a class="nav-link" href="/admin/events">
+                    <i class="fas fa-fw fa-calendar-alt"></i>
+                    <span>События</span></a>
+            </li>
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComponents"
-                    aria-expanded="true" aria-controls="collapsePages">
+            {{-- <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComponents" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-th-large"></i>
-                        <span>Компоненты</span>
+                    <span>Компоненты</span>
                 </a>
                 <div id="collapseComponents" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="register.html">Уюшма хакида</a>
+                        <a class="collapse-item" href="admin/page">Уюшма хакида</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Другие:</h6>
                         <a class="collapse-item" href="404.html"></a>
                         <a class="collapse-item" href="blank.html">Пустая страница</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                        <span>Страницы</span>
+                    <span>Страницы</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Уюшма хакида</a>
-                        <a class="collapse-item" href="#">Конунчилик</a>
-                        <a class="collapse-item" href="#">Наслчилик</a>
-                        <a class="collapse-item" href="#">Ветеринария</a>
-                        <a class="collapse-item" href="#">Наслчилик</a>
+                        <a class="collapse-item" href="/admin/pages/about">Уюшма хакида</a>
+                        <a class="collapse-item" href="/admin/pages/law">Конунчилик</a>
+                        <a class="collapse-item" href="/admin/pages/inheritance">Наслчилик</a>
+                        <a class="collapse-item" href="/admin/pages/zoovet">Ветеринария</a>
 
 
                     </div>
@@ -141,11 +152,9 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Поиск..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Поиск..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -159,18 +168,14 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -181,59 +186,55 @@
                             </div>
                         </li>
 
-                    
+
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">1</span>
+                                @isset($feedbacks)
+                                    <span class="badge badge-danger badge-counter">{{$feedbacks->count()}}</span>
+                                @endisset
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Сообщения
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
+                                @if(isset($feedbacks) && !$feedbacks->isEmpty())    
+                                    @foreach($feedbacks as $feedback)
+                                        <a class="dropdown-item d-flex align-items-center" href="/admin/feedback#{{$feedback->id}}">
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate">{{$feedback->body}}</div>
+                                                <div class="small text-gray-500">{{$feedback->name}} {{$feedback->created_at->diffForHumans()}}</div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                @else
+                                    <a class="dropdown-item d-flex align-items-center">
+                                        <div class="font-weight-bold">
+                                            <div class="text-truncate text-center">Пока нет новых сообщений.</div>
+                                        </div>
+                                    </a>
+                                @endif
                                 <a class="dropdown-item text-center small text-gray-500" href="/admin/feedback">Остальные</a>
                             </div>
+
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Админ</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                           {{-- 
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <div class="dropdown-divider"></div> --}}
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="admin/logout" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Выйти   
+                                    Выйти
                                 </a>
                             </div>
                         </li>
@@ -271,8 +272,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -300,7 +300,7 @@
 
 
     @yield('scripts')
-    
+
 </body>
 
 </html>
