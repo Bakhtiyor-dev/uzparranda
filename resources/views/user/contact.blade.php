@@ -1,5 +1,4 @@
 @extends('user.layouts.main',['class'=>'no-index'])
-
 @section('content')
 	<div class="wrapper">
 		<div class="container">

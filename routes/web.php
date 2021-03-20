@@ -21,15 +21,15 @@ VisitAnalytics::registerVisitor();
 //User routes
 Route::get('/','IndexController@index');
 Route::view('/contact','user.contact');
-Route::get('/news','NewsController@index');
-Route::get('/view/{new}','NewsController@show');
+Route::get('/news','NewsController@indexUser');
+Route::get('/view/{new}','NewsController@showUser');
 Route::get('/pages/{page}','PagesController@renderUser');
 
 //User pages
 Route::view('/view','user.view');
 Route::post('/feedback','FeedbackController@store');
 Route::get('/events','EventsController@index');
-Route::get('/articles','ArticlesController@index');
+Route::get('/articles','ArticlesController@indexUser');
 
 //Admin routes
 Route::view('/admin','admin.index')->name('admin');
@@ -41,12 +41,15 @@ Route::get('/admin/products','ProductsController@indexAdmin')->name('products');
 Route::get('/admin/food','FoodController@indexAdmin')->name('food');
 Route::get('/admin/events','EventsController@indexAdmin')->name('events');
 Route::get('/admin/articles','ArticlesController@indexAdmin')->name('articles');
-Route::get('/admin/pages/{page}','PagesController@renderAdmin');
+
+Route::get('/admin/pages/{page}','PagesController@renderAdmin')->name('page');
+Route::patch('/admin/pages/{page}','PagesController@update');
+
 
 //News
 Route::get('/admin/news/add','NewsController@add');
 Route::post('/admin/news/add','NewsController@store');
-Route::get('/admin/news/view/{new}','NewsController@show');
+Route::get('/admin/news/view/{new}','NewsController@showAdmin');
 
 Route::get('/admin/news/edit/{new}','NewsController@edit');
 Route::patch('/admin/news/edit/{new}','NewsController@update');

@@ -14,6 +14,9 @@
 	<link rel="stylesheet" href="{{asset('css/lightbox.css')}}">
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/media.css')}}">
+	<link rel="stylesheet" href="{{asset('css/calendar/style.css')}}">
+	<link rel="stylesheet" href="{{asset('css/calendar/theme.css')}}">
+	
 </head>
 <body class="{{$class}}">
 	@include('user.partials.header')
@@ -24,6 +27,7 @@
 	@include('user.partials.success_modal')
 	
 	<script src="/js/jquery.js"></script>
+	
 	<script src="/js/slick.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/lightbox.js"></script>
@@ -33,5 +37,7 @@
 			$('#success').modal('show');
 		</script>
 	@endif
+
+	@yield('scripts')
 </body>
 </html>

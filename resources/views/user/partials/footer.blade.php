@@ -4,9 +4,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<h1>LOGO</h1>
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbZjyOU-2m3Pjh_bRNq9F_4imsQeUS-GCJ1w&usqp=CAU000000000" width="100" alt="logo">
+				
+				<p>	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
 			</div>
 			<div class="col-md-6">
 

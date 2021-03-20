@@ -94,36 +94,70 @@ use App\Models\Feedback;
                     <i class="fas fa-fw fa-calendar-alt"></i>
                     <span>События</span></a>
             </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComponents" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-th-large"></i>
-                    <span>Компоненты</span>
-                </a>
-                <div id="collapseComponents" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="admin/page">Уюшма хакида</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Другие:</h6>
-                        <a class="collapse-item" href="404.html"></a>
-                        <a class="collapse-item" href="blank.html">Пустая страница</a>
-                    </div>
-                </div>
-            </li> --}}
-            <!-- Nav Item - Pages Collapse Menu -->
+            
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link {{Route::is('page') ? '' : 'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="{{Route::is('page')}}" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Страницы</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                
+                <div id="collapsePages" class="collapse {{Route::is('page') ? 'show' : ''}}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/admin/pages/about">Уюшма хакида</a>
-                        <a class="collapse-item" href="/admin/pages/law">Конунчилик</a>
-                        <a class="collapse-item" href="/admin/pages/inheritance">Наслчилик</a>
-                        <a class="collapse-item" href="/admin/pages/zoovet">Ветеринария</a>
+                        <a class="collapse-item 
+                            @isset($page)
+                                {{$page->name=='about'?'active':''}}
+                            @endisset" 
+                            href="/admin/pages/about">
+                            Уюшма хакида
+                        </a>
 
+                        <a class="collapse-item 
+                            @isset($page)
+                                {{$page->name=='activity'?'active':''}}
+                            @endisset" 
+                            href="/admin/pages/activity">
+                            Фаолият
+                        </a>
 
+                        <a class="collapse-item 
+                            @isset($page)
+                                {{$page->name=='rules'?'active':''}}
+                            @endisset" 
+                            href="/admin/pages/rules">
+                            Низом
+                        </a>
+
+                        <a class="collapse-item 
+                            @isset($page)
+                                {{$page->name=='services'?'active':''}}
+                            @endisset" 
+                            href="/admin/pages/services">
+                            Хизматлар
+                        </a>
+
+                        <a class="collapse-item 
+                            @isset($page)
+                                {{$page->name=='law'?'active':''}}
+                            @endisset" 
+                            href="/admin/pages/law">
+                            Конунчилик
+                        </a>
+                        
+                        <a class="collapse-item 
+                            @isset($page)
+                                {{$page->name=='inheritance'?'active':''}}
+                            @endisset"
+                            href="/admin/pages/inheritance">
+                            Наслчилик
+                        </a>
+                        
+                        <a class="collapse-item 
+                            @isset($page)
+                                {{$page->name=='zoovet'?'active':''}}
+                            @endisset" 
+                            href="/admin/pages/zoovet">
+                            Ветеринария
+                        </a>
                     </div>
                 </div>
             </li>
@@ -272,24 +306,7 @@ use App\Models\Feedback;
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Bootstrap core JavaScript-->
     <script src="/js/jquery/jquery.min.js"></script>

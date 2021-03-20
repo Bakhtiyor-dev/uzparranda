@@ -8,7 +8,7 @@ use App\Models\Page;
 class PageSeeder extends Seeder
 {
     
-    public $pages=['about','inheritance','law','zoovet'];
+    public $pages=['about','inheritance','law','zoovet','activity','rules','services'];
 
     /**
      * Run the database seeds.

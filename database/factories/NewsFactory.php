@@ -23,7 +23,7 @@ class NewsFactory extends Factory
     {
         return [
             'title'=>$this->faker->realText($maxNbChars=50),
-            'image'=>'https://picsum.photos/200/300?random='.$this->faker->randomDigit,
+            'image'=>'https://picsum.photos/300/300?random='.$this->faker->randomDigit,
             'status'=>true,
             'body'=>$this->faker->realText() 
         ];

@@ -7,7 +7,7 @@
 				@forelse ($lastNews as $news)
 					<div class="col-md-4">
 						<div class="news_box">
-							<div class="img"><img src="/storage/{{$news->image}}" alt="image"></div>
+							<div class="img"><img src="{{$news->image}}" alt="image"></div>
 							<div class="categ">Эълон</div>	
 							<div class="body">
 								<a href="/view/{{$news->id}}">{{$news->title}}</a>

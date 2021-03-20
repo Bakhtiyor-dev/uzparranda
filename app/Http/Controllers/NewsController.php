@@ -8,7 +8,7 @@ use App\Http\Requests\StoreItemRequest;
 
 class NewsController extends Controller
 {
-    public function index(){
+    public function indexUser(){
     	$news=News::where('status',1)
                     ->orderBy('created_at','desc')
                     ->paginate(9);
@@ -20,7 +20,10 @@ class NewsController extends Controller
         return view('admin.news',compact('news'));
     }
 
-    public function show(News $new){
+    public function showUser(News $new){
+        return view('user.view',compact('new'));
+    }
+    public function showAdmin(News $new){
         return view('admin.modules.view',[
             'item'=>$new,
             'name'=>'Новость'
@@ -35,7 +38,7 @@ class NewsController extends Controller
         News::create([
             'title'=>$request->title,
             'body'=>$request->body,
-            'image'=>$request->file('img')->store('/img/news'),
+            'image'=>'/storage/'.$request->file('img')->store('/'),
             'status'=>$request->status?true:false
         ]); 
         return back()->with('success','Новость добавленa!');
@@ -56,7 +59,7 @@ class NewsController extends Controller
         $new->update([
             'title'=>$request->title,
             'body'=>$request->body,
-            'image'=>$img ? $img->store('/img/news') : $path,
+            'image'=>$img ? $img->store() : $path,
             'status'=>$request->status?true:false
         ]);
         return back()->with('success','Новость изменено!');

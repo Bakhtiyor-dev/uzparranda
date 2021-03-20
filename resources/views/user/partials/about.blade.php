@@ -1,6 +1,6 @@
 @isset ($data)  
 @if(!empty($data))
-<div class="about">
+	<div class="about">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
@@ -18,6 +18,7 @@
 			</div>
 		</div>
 	</div>
+
 @else
 <p>Пусто...</p>	
 @endif

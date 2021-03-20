@@ -7,11 +7,10 @@
 			<h2 class="title">{!!$new->title!!}</h2>
 			<div class="news">
 				<div class="row">
-
 					<div class="col-md-9">
 						<div class="page">
 							<div class="thumb_box">
-								<img src="/storage/{{$new->image}}" alt="">
+								<img src="{{$new->image}}" alt="">
 							</div>
 							<div class="categ">Эълон</div>
 							<div class="body">
