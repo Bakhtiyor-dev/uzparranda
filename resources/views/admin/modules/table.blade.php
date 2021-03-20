@@ -36,13 +36,11 @@
                         <td>
                             <a href="/admin/{{$table}}/view/{{$item->id}}" class="btn btn-info btn-circle btn-sm"><i class="fas fa-eye btn-circle"></i></a>
                             <a href="/admin/{{$table}}/edit/{{$item->id}}" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
-                            <form action="/admin/{{$table}}" method="post" class="d-inline">
+                            <form action="/admin/{{$table}}/{{$item->id}}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <input type="hidden" value="{{$item->id}}">
                                 <button type="submit" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></button>
                             </form>
-                            {{-- <a href="/admin/{{$table}}/" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a> --}}
                         </td>
                     </tr>
                     @empty

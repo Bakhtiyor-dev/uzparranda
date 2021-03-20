@@ -23,7 +23,8 @@ class EventFactory extends Factory
     {
         return [
             'title'=>$this->faker->word,
-            'body'=>$this->faker->sentence
+            'body'=>$this->faker->sentence,
+            'image'=>'https://picsum.photos/200/300?random='.$this->faker->randomDigit
         ];
     }
 }

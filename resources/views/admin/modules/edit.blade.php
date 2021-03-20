@@ -15,17 +15,18 @@
 </div>
 @endif
 
-<h3 class="text-dark">Добавить {{$name}} </h3>
-<form action="/admin/{{$table}}/add" 
+<h3 class="text-dark">Редактировать {{$name}} </h3>
+<form action="/admin/{{$table}}/edit/{{$item->id}}" 
 		method="post" 
 		class="form text-dark" 
 		enctype="multipart/form-data">
 	@csrf
+    @method('PATCH')
 	<label for="title">Название:</label>
 	<input type="text" 
 			id="title" 
 			name="title" 
-			value="{{old('title')}}" 
+			value="{{$item->title}}" 
 			class="form-control" >
 	
 	<label class="mt-2" for="image">Изображение:</label>
@@ -35,15 +36,14 @@
 		<input type="file" 
 				class="file-input" 
 				id="image" 
-				name="img" 
-				value="{{old('img')}}" 
+				name="img"  
 				accept=".jpg,.jpeg,.png,.gif" > 
 	</div>
-	<div id="divImageMediaPreview"></div>
+	<div id="divImageMediaPreview"><img src="{{$item->image}}" alt="image"></div>
 
 	<label for="editor" class="mt-2">Содержимое:</label>			
 	<textarea name="body" 
-				id="editor">{{old('body')}}</textarea>
+				id="editor">{!!$item->body!!}</textarea>
 	<div class="custom-control custom-checkbox float-left m-2">
 		<input type="checkbox" 
 				class="custom-control-input" 
@@ -51,7 +51,7 @@
 				id="cst" />
 		<label class="custom-control-label" for="cst">&nbsp;Показывать для пользователей</label>
 	</div>
-	<button type="submit" class="btn btn-primary float-right mt-2">Добавить</button>
+	<button type="submit" class="btn btn-primary float-right mt-2">Сохранить</button>
 </form>
 @endsection
 

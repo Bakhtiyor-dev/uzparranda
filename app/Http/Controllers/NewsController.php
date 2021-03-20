@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\News;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreItemRequest;
 
 
 class NewsController extends Controller
@@ -20,31 +21,50 @@ class NewsController extends Controller
     }
 
     public function show(News $new){
-        if($new->status==1)
-            return view('user.view',['new'=>$new]);
-        abort(404);
+        return view('admin.modules.view',[
+            'item'=>$new,
+            'name'=>'Новость'
+            ]);
     }
 
-    public function store(Request $request){
-        $this->validation($request);
-      
-        $new=News::create([
+    public function add(){
+        return view('admin.modules.add',['name'=>'новость','table'=>'news']);
+    }
+
+    public function store(StoreItemRequest $request){
+        News::create([
             'title'=>$request->title,
             'body'=>$request->body,
             'image'=>$request->file('img')->store('/img/news'),
             'status'=>$request->status?true:false
+        ]); 
+        return back()->with('success','Новость добавленa!');
+    }
+
+    public function edit(News $new){
+        return view('admin.modules.edit',[
+            'name'=>'новость',
+            'table'=>'news',
+            'item'=>$new
         ]);
-
-    	return back()->with('success','Новость добавлена!');
     }
 
-    public function validation($request){
-        
-        $this->validate($request,
-            [
-                'title'=>'required|max:255',
-                'body'=>'required',
-            ]
-        );
+    public function update(News $new,Request $request){
+        $img=$request->file('img');
+        $path=$new->image;
+
+        $new->update([
+            'title'=>$request->title,
+            'body'=>$request->body,
+            'image'=>$img ? $img->store('/img/news') : $path,
+            'status'=>$request->status?true:false
+        ]);
+        return back()->with('success','Новость изменено!');
     }
+
+    public function destroy(News $new){
+        $new->delete();
+        return back();  
+    }
+    
 }

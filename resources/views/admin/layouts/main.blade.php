@@ -23,6 +23,7 @@ use App\Models\Feedback;
     <!-- Custom styles for this template-->
     @yield('customStyles')
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
 
 </head>
 
