@@ -22,6 +22,7 @@ class SearchController extends Controller
     
     public function searchUser(Request $request)
     {
+        $request->validate(['search'=>'required']);
         $searchResults = (new Search())
             ->registerModel(News::class, 'title','body')
             ->registerModel(Article::class, 'title','body')
@@ -38,6 +39,8 @@ class SearchController extends Controller
     }
 
     public function searchAdmin(Request $request){
+        $request->validate(['search'=>'required']);
+        
         $searchResults = (new Search())
         ->registerModel(News::class, 'title','body')
         ->registerModel(Article::class, 'title','body')
@@ -47,7 +50,11 @@ class SearchController extends Controller
         ->registerModel(Page::class, 'name','body')
         ->registerModel(Feedback::class,['name','email','phone_number','org_name','body'])
         ->search($request->search);
+        
 
-        return view('admin.modules.search',compact('searchResults'));
+        return view('admin.modules.search',[
+            'searchResults'=>$searchResults,
+            'search'=>$request->search
+        ]);
     }
 }

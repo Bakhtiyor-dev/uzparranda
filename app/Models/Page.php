@@ -20,13 +20,12 @@ class Page extends Model implements Searchable
     }
 
     public function adminPath(){
-        return "/admin/news/{$this->id}";
+        return "/admin/pages/{$this->name}";
     }
 
 
     public function getSearchResult(): SearchResult
     {
-       
         return new SearchResult(
            $this,
            $this->body

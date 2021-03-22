@@ -1,6 +1,5 @@
 @extends('admin.layouts.main')
 @section('content')
-
 <h4 class="float-left">Сообщения от пользователей:</h4>
 <form action="/admin/feedback" method="post" class="float-right">
 	@csrf
@@ -24,7 +23,7 @@
 			@isset ($messages)
 			@forelse($messages as $message)
 			<!-- row -->
-			<tr class="border-left-primary" id="{{$message->id}}">
+			<tr class="border-left-primary active" id="msg-{{$message->id}}">
 				<!-- label -->
 				<td class="pl-3">
 					<div class="custom-control custom-checkbox">
@@ -87,7 +86,6 @@
 		</tbody>
 	</table>
 </div>
-
 <div class="float-right">
 {{$messages->links('pagination::bootstrap-4')}}
 </div>
@@ -119,6 +117,10 @@
 				$('#delete_btn').removeAttr('disabled');
 			}
 		}
+		var id=location.hash.substr(5,2);
+		$(`#msg-${id}`).css('background-color','#ccc')
+		console.log(id)
+
 			
 
 	</script>

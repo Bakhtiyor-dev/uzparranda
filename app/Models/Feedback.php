@@ -13,6 +13,10 @@ class Feedback extends Model implements Searchable
 
     protected $guarded=[];
 
+    public function adminPath(){
+        return "/admin/feedback#msg-{$this->id}";
+    }
+
     public function getSearchResult(): SearchResult
     {
         return new SearchResult(

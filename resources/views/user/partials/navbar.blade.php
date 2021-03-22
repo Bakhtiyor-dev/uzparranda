@@ -36,7 +36,7 @@
 		<form action="/search" method="POST">
 			<div class="input">
 				@csrf
-				<input type="text" name="search" placeholder="Қидирув">
+				<input type="text" name="search" placeholder="Қидирув" required>
 				<input type="submit" value="Излаш">
 			</div>
 		</form>

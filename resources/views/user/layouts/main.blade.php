@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="{{asset('css/media.css')}}">
 	<link rel="stylesheet" href="{{asset('css/calendar/style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/calendar/theme.css')}}">
+	<link rel="stylesheet" href="/css/jquery.paginate.css">
 	
 </head>
 <body class="{{$class}}">
