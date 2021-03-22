@@ -1,13 +1,16 @@
+@if(session('success'))
+	<div class="alert alert-success">{{session('success')}}</div>
+@endif
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">{{$name}}:</h6>
         <form action="/admin/{{$table}}" method="post" class="float-right">
             @csrf
             @method('DELETE')
-            <input type="hidden" id="ids_for_delete" name="feedbacks">
+            <input type="hidden" id="ids_for_delete" name="ids">
             <button type="submit" class="btn btn-danger ml-2" id="delete_btn" disabled>Удалить отмеченные</button>
         </form>
-        <a class="btn btn-primary  float-right" href="/admin/{{$table}}/add">Добавить</a>
+        <a class="btn btn-primary  float-right" href="/admin/{{$table}}/create">Добавить</a>
     </div>
 
     <div class="card-body">
@@ -34,8 +37,8 @@
                         <td>{{Str::limit($item->title,20,'...')}}</td>
                         <td>{{Str::limit($item->body,50,'...')}}</td>
                         <td>
-                            <a href="/admin/{{$table}}/view/{{$item->id}}" class="btn btn-info btn-circle btn-sm"><i class="fas fa-eye btn-circle"></i></a>
-                            <a href="/admin/{{$table}}/edit/{{$item->id}}" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+                            <a href="/admin/{{$table}}/{{$item->id}}" class="btn btn-info btn-circle btn-sm"><i class="fas fa-eye btn-circle"></i></a>
+                            <a href="/admin/{{$table}}/{{$item->id}}/edit" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
                             <form action="/admin/{{$table}}/{{$item->id}}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')

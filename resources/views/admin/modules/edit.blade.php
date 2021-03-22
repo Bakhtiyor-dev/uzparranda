@@ -16,7 +16,7 @@
 @endif
 
 <h3 class="text-dark">Редактировать {{$name}} </h3>
-<form action="/admin/{{$table}}/edit/{{$item->id}}" 
+<form action="/admin/{{$table}}/{{$item->id}}" 
 		method="post" 
 		class="form text-dark" 
 		enctype="multipart/form-data">

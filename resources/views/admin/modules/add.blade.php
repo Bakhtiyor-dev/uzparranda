@@ -16,7 +16,7 @@
 @endif
 
 <h3 class="text-dark">Добавить {{$name}} </h3>
-<form action="/admin/{{$table}}/add" 
+<form action="/admin/{{$table}}" 
 		method="post" 
 		class="form text-dark" 
 		enctype="multipart/form-data">

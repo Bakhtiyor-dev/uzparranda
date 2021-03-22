@@ -8,7 +8,7 @@ use App\Models\Page;
 use App\Models\Product;
 
 class IndexController extends Controller
-{
+{	
     public function index(){
     	$about=Page::where('name','about')->first();
     	$lastNews=News::where('status',1)

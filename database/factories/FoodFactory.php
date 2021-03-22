@@ -22,9 +22,10 @@ class FoodFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>$this->faker->word,
-            'body'=>$this->faker->sentence,
-            'image'=>'https://picsum.photos/200/300?random='.$this->faker->randomDigit
+            'title'=>$this->faker->realText($maxNbChars=50),
+            'body'=>$this->faker->realText(500), 
+            'image'=>'https://picsum.photos/300/300?random='.$this->faker->randomDigit,
+            'status'=>true
         ];
     }
 }

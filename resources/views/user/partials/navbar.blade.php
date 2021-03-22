@@ -33,9 +33,10 @@
 
 <div class="search_box">
 	<div class="container">
-		<form action="">
+		<form action="/search" method="POST">
 			<div class="input">
-				<input type="text" placeholder="Қидирув">
+				@csrf
+				<input type="text" name="search" placeholder="Қидирув">
 				<input type="submit" value="Излаш">
 			</div>
 		</form>

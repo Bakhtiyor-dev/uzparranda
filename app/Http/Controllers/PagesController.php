@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 class PagesController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('admin')->except('renderUser');
+    }
 	protected $pages=[
 		'about'=>'Уюшма хакида',
 		'inheritance'=>'Наслчилик',

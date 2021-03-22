@@ -54,20 +54,13 @@ use App\Models\Feedback;
                     <span>Сообщения</span></a>
             </li>
 
-            {{-- <li class="nav-item {{Route::is('feedback')?'active':''}}">
-            <a class="nav-link" href="/admin/website-data">
-                <i class="fas fa-table"></i>
-                <span>Данные сайта</span></a>
-            </li>
-
-            --}} <li class="nav-item {{Route::is('products')?'active':''}}">
+            <li class="nav-item {{Route::is('products.index')?'active':''}}">
                 <a class="nav-link" href="/admin/products">
                     <i class="fas fa-dolly"></i>
-                    <span>Продукты</span></a>
+                <span>Продукты</span></a>
             </li>
 
-
-            <li class="nav-item {{Route::is('food')?'active':''}}">
+            <li class="nav-item {{Route::is('food.index')?'active':''}}">
                 <a class="nav-link" href="/admin/food">
                     <i class="fas fa-carrot"></i>
                     <span>Кормы</span></a>
@@ -77,19 +70,19 @@ use App\Models\Feedback;
                 Контент
             </div>
 
-            <li class="nav-item {{Route::is('news')?'active':''}}">
+            <li class="nav-item {{Route::is('news.index')?'active':''}}">
                 <a class="nav-link" href="/admin/news">
                     <i class="fas fa-fw fa-newspaper"></i>
                     <span>Новости</span></a>
             </li>
 
-            <li class="nav-item {{Route::is('articles')?'active':''}}">
+            <li class="nav-item {{Route::is('articles.index')?'active':''}}">
                 <a class="nav-link" href="/admin/articles">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Статьи</span></a>
             </li>
 
-            <li class="nav-item {{Route::is('events')?'active':''}}">
+            <li class="nav-item {{Route::is('events.index')?'active':''}}">
                 <a class="nav-link" href="/admin/events">
                     <i class="fas fa-fw fa-calendar-alt"></i>
                     <span>События</span></a>
@@ -187,11 +180,13 @@ use App\Models\Feedback;
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+                            action="/admin/search" method="POST">
+                            @csrf
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Поиск..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Поиск..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -208,11 +203,13 @@ use App\Models\Feedback;
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
+                                <form class="form-inline mr-auto w-100 navbar-search"
+                                    action="/admin/search" method="POST">
+                                    @csrf
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button class="btn btn-primary" type="submit">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -243,6 +240,8 @@ use App\Models\Feedback;
                                                 <div class="text-truncate">{{$feedback->body}}</div>
                                                 <div class="small text-gray-500">{{$feedback->name}} {{$feedback->created_at->diffForHumans()}}</div>
                                             </div>
+                  
+    
                                         </a>
                                     @endforeach
                                 @else
@@ -267,7 +266,7 @@ use App\Models\Feedback;
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="admin/logout" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/admin/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Выйти
                                 </a>
@@ -305,8 +304,6 @@ use App\Models\Feedback;
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    
 
     <!-- Bootstrap core JavaScript-->
     <script src="/js/jquery/jquery.min.js"></script>

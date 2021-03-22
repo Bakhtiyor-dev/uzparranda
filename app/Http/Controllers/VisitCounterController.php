@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Visit;
 
 class VisitCounterController extends Controller
-{
+{	
+	public function __construct()
+    {
+        $this->middleware('admin');
+    }
 	protected $months=['January','February','March','April','May','June','July','August','September','October','November','December'];
 
     public function respond(){   		

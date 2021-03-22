@@ -7,7 +7,11 @@ use App\Models\Feedback;
 
 class FeedbackController extends Controller
 {	
-
+    public function __construct()
+    {
+        $this->middleware('admin')->except('store');
+    }
+    
     public function index(){
         Feedback::where('read',0)->update(['read'=>1]);
         $messages=Feedback::orderBy('created_at','desc')->paginate(8);
@@ -42,7 +46,7 @@ class FeedbackController extends Controller
     public function destroy(Request $request){
         $ids=explode(',',$request->feedbacks);
         Feedback::whereIn('id',$ids)->delete();
-        return back();
-    } 
+        return back()->with('success','Отмеченные удалены!');;
+    }
 
 }
