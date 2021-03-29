@@ -14,15 +14,32 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="/pages/about">Уюшма хакида</a></li>
-				<li><a href="/news">Янгиликлар</a></li>
-				<li><a href="/events">Вокеалар</a></li>
-				<li><a href="/articles">Маколалар</a></li>
-				<li><a href="/pages/law">Конунчилик</a></li>
-				<li><a href="/pages/inheritance">Наслчилик</a></li>
-				<li><a href="/pages/zoovet">Ветеринария</a></li>
-				<li><a href="/products">Махсулотлар</a></li>
-				<li><a href="/food">Озукалар</a></li>
+				<li><a href="/pages/about" 
+					@isset($page) 
+						class="{{$page->name=='about'?'active':''}}"
+					@endisset>Уюшма хакида</a></li>
+				
+				<li><a href="/news" class='{{Route::is('news') ? "active":""}}'>Янгиликлар</a></li>
+				<li><a href="/events" class='{{Route::is('events') ? "active":""}}'>Вокеалар</a></li>
+				<li><a href="/articles" class='{{Route::is('articles') ? "active":""}}'>Маколалар</a></li>
+				
+				<li><a href="/pages/law" 
+					@isset($page) 
+						class="{{$page->name=='law'?'active':''}}"
+					@endisset>Конунчилик</a></li>
+
+				<li><a href="/pages/inheritance" 
+					@isset($page) 
+						class="{{$page->name=='inheritance'?'active':''}}"
+					@endisset>Наслчилик</a></li>
+				
+				<li><a href="/pages/zoovet" 
+					@isset($page) 
+						class="{{$page->name=='zoovet'?'active':''}}"
+					@endisset >Ветеринария</a></li>
+				
+					<li><a href="/products" class='{{Route::is('products') ? "active":""}}'>Махсулотлар</a></li>
+				<li><a href="/food" class='{{Route::is('food') ? "active":""}}'>Озукалар</a></li>
 
 			</ul>
 			<button class="open_search"><i class="fa fa-search"></i></button>

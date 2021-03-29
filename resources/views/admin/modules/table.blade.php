@@ -44,6 +44,14 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></button>
                             </form>
+                            <span class="custom-switch ml-2">
+                                <input type="checkbox" 
+                                        onclick="status(this.checked,{{$item->id}})"
+                                        class="custom-control-input" 
+                                        id="customSwitch{{$item->id}}"
+                                        {{$item->status ? 'checked':''}}>
+                                <label class="custom-control-label" for="customSwitch{{$item->id}}"></label>
+                            </span>
                         </td>
                     </tr>
                     @empty
@@ -87,6 +95,19 @@
             $('#delete_btn').removeAttr('disabled');
         }
     }
+
+    function status(checked,id){
+        $.post('/admin/status',{
+            '_token':"{{csrf_token()}}",
+            'table':'{{$table}}',
+            'id':id,
+            'checked':checked
+        },function(response){
+            console.log(response);
+        });
+        
+    }
+
 
 </script>
 @endsection

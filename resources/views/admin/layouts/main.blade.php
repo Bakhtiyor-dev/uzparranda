@@ -235,7 +235,7 @@ use App\Models\Feedback;
                                 </h6>
                                 @if(isset($feedbacks) && !$feedbacks->isEmpty())    
                                     @foreach($feedbacks as $feedback)
-                                        <a class="dropdown-item d-flex align-items-center" href="/admin/feedback#{{$feedback->id}}">
+                                        <a class="dropdown-item d-flex align-items-center" href="/admin/feedback#msg-{{$feedback->id}}">
                                             <div class="font-weight-bold">
                                                 <div class="text-truncate">{{$feedback->body}}</div>
                                                 <div class="small text-gray-500">{{$feedback->name}} {{$feedback->created_at->diffForHumans()}}</div>

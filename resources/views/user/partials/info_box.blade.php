@@ -16,23 +16,14 @@
 			<div class="widget">
 				<div class="title">Сўровнома</div>
 				<div class="ques">Бизнинг сайтимиз сизга ёқдими?</div>
-				<form action="">
-					<div class="input">
-						<input type="checkbox" name="q1" id="q1">
-						<label for="q1">аъло</label>
-					</div>
-					<div class="input">
-						<input type="checkbox" name="q1" id="q1">
-						<label for="q1">аъло</label>
-					</div>
-					<div class="input">
-						<input type="checkbox" name="q1" id="q1">
-						<label for="q1">аъло</label>
-					</div>
-					<div class="input">
-						<input type="checkbox" name="q1" id="q1">
-						<label for="q1">аъло</label>
-					</div>
+				<form action="/rate" method="POST">
+					@csrf
+					<input type="radio" name="rate" value="yes" checked>
+					<label for="">Ха</label>
+					<br>
+					<input type="radio" name="rate" value="no">
+					<label for="">Йук</label>
+					<br>
 					<input type="submit" value="OK">
 					<div class="clearfix"></div>
 				</form>

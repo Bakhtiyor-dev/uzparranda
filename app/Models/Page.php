@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Searchable\Searchable;
-use Spatie\Searchable\SearchResult;
 
-class Page extends Model implements Searchable
+class Page extends Model
 {   
     use HasFactory;
     protected $guarded=[];
@@ -15,6 +13,8 @@ class Page extends Model implements Searchable
     	return 'name';
     }
 
+    public static $searchableType = 'Страницы:';
+    
     public function userPath(){
         return "/pages/{$this->name}";
     }
@@ -24,11 +24,4 @@ class Page extends Model implements Searchable
     }
 
 
-    public function getSearchResult(): SearchResult
-    {
-        return new SearchResult(
-           $this,
-           $this->body
-        );
-    }
 }

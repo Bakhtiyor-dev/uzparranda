@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\Searchable\Search;
+use App\Search;
 use App\Models\Article;
 use App\Models\Event;
 use App\Models\Food;
@@ -15,46 +15,75 @@ use App\Models\Feedback;
 
 class SearchController extends Controller
 {
+    public $models=[
+        Article::class,
+        Event::class,
+        Food::class,
+        News::class,
+        Product::class,
+    ];
+
     public function __construct()
     {
         $this->middleware('admin')->except('searchUser');
     }
     
     public function searchUser(Request $request)
-    {
+    {   
         $request->validate(['search'=>'required']);
-        $searchResults = (new Search())
-            ->registerModel(News::class, 'title','body')
-            ->registerModel(Article::class, 'title','body')
-            ->registerModel(Event::class, 'title','body')
-            ->registerModel(Product::class, 'title','body')
-            ->registerModel(Food::class, 'title','body')
-            ->registerModel(Page::class, 'name','body')
-            ->search($request->search);
+        $res=[];
+        foreach($this->models as $model){
+            $result=Search::searchInModel($model,['title','body'],$request->search);
+            if(!$result->isEmpty())
+                $res[$model::$searchableType]=$result;
+        }
+        $pages=Search::searchInModel(Page::class,['body','created_at'],$request->search);
+            if(!$pages->isEmpty())
+                $res['Cтраницы']=$pages;
+        
+        $count=0;
+        foreach($res as $r){
+            $count+=count($r);
+        }
 
-            return view('user.modules.search',[
-                'searchResults'=>$searchResults,
-                'search'=>$request->search
-            ]);
+        return view('user.modules.search',[
+            'searchResults'=>$res,
+            'search'=>$request->search,
+            'count'=>$count
+        ]);
+     
     }
 
     public function searchAdmin(Request $request){
         $request->validate(['search'=>'required']);
-        
-        $searchResults = (new Search())
-        ->registerModel(News::class, 'title','body')
-        ->registerModel(Article::class, 'title','body')
-        ->registerModel(Event::class, 'title','body')
-        ->registerModel(Product::class, 'title','body')
-        ->registerModel(Food::class, 'title','body')
-        ->registerModel(Page::class, 'name','body')
-        ->registerModel(Feedback::class,['name','email','phone_number','org_name','body'])
-        ->search($request->search);
-        
+        $res=[];
+        foreach($this->models as $model){
+            $result=Search::searchInModel($model,['title','body'],$request->search);
+            if(!$result->isEmpty())
+                $res[$model::$searchableType]=$result;
+        }
 
+        $pages=Search::searchInModel(Page::class,['body','created_at'],$request->search);
+        if(!$pages->isEmpty())
+            $res['Cтраницы']=$pages;
+
+        $feedback=Feedback::where('name','LIKE','%'.$request->search.'%')
+                            ->orWhere('email','LIKE','%'.$request->search.'%')
+                            ->orWhere('phone_number','LIKE','%'.$request->search.'%')
+                            ->orWhere('org_name','LIKE','%'.$request->search.'%')
+                            ->orWhere('body','LIKE','%'.$request->search.'%')
+                            ->get();
+        if(!$feedback->isEmpty())
+            $res['Сообщения']=$feedback;
+        $count=0;
+        foreach($res as $r){
+            $count+=count($r);
+        }
+        
         return view('admin.modules.search',[
-            'searchResults'=>$searchResults,
-            'search'=>$request->search
+            'searchResults'=>$res,
+            'search'=>$request->search,
+            'count'=>$count
         ]);
     }
 }

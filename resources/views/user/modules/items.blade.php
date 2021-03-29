@@ -24,7 +24,7 @@
 										</div>
 									</div>
 							@empty 
-								<p>Нет новостей</p>	
+								<p>Нет {{$name}}</p>	
 							@endforelse
 						@endisset	
 					</div>

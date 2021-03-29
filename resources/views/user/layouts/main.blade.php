@@ -16,7 +16,8 @@
 	<link rel="stylesheet" href="{{asset('css/media.css')}}">
 	<link rel="stylesheet" href="{{asset('css/calendar/style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/calendar/theme.css')}}">
-	<link rel="stylesheet" href="/css/jquery.paginate.css">
+	<link rel="stylesheet" href="{{asset('css/jquery.paginate.css')}}">
+	@yield('styles')
 	
 </head>
 <body class="{{$class}}">
@@ -28,17 +29,16 @@
 	@include('user.partials.success_modal')
 	
 	<script src="/js/jquery.js"></script>
-	
 	<script src="/js/slick.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/lightbox.js"></script>
 	<script src="/js/main.js"></script>
+	
 	@if(session()->has('success'))
 		<script>
 			$('#success').modal('show');
 		</script>
 	@endif
-
 	@yield('scripts')
 </body>
 </html>

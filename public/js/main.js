@@ -1,7 +1,4 @@
 jQuery(function($) {'use strict',
-
-		
- 
     // Offset for Main Navigation
     $('nav.navbar').affix({
         offset: {
@@ -67,6 +64,7 @@ jQuery(function($) {'use strict',
       {
         breakpoint: 600,
         settings: {
+          arrows:false,
           slidesToShow: 2,
           slidesToScroll: 2
         }
@@ -74,6 +72,7 @@ jQuery(function($) {'use strict',
       {
         breakpoint: 480,
         settings: {
+          arrows:false,
           slidesToShow: 3,
           slidesToScroll: 1
         }
@@ -100,6 +99,7 @@ jQuery(function($) {'use strict',
       {
         breakpoint: 600,
         settings: {
+          arrows:false,
           slidesToShow: 2,
           slidesToScroll: 2
         }
@@ -107,6 +107,7 @@ jQuery(function($) {'use strict',
       {
         breakpoint: 480,
         settings: {
+          arrows:false,
           slidesToShow: 3,
           slidesToScroll: 1
         }

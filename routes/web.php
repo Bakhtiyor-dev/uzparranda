@@ -22,23 +22,25 @@ VisitAnalytics::registerVisitor();
 Route::get('/', 'IndexController@index');
 
 Route::post('/search', 'SearchController@searchUser');
+Route::post('/rate','RateController@store');
+
 Route::post('/feedback', 'FeedbackController@store');
 
 Route::get('/pages/{page}', 'PagesController@renderUser');
 
-Route::get('/news', 'NewsController@indexUser');
+Route::get('/news', 'NewsController@indexUser')->name('news');
 Route::get('/news/view/{new}', 'NewsController@showUser');
     
-Route::get('/events', 'EventsController@indexUser');
+Route::get('/events', 'EventsController@indexUser')->name('events');
 Route::get('/events/view/{event}', 'EventsController@showUser');
 
-Route::get('/articles', 'ArticlesController@indexUser');
+Route::get('/articles', 'ArticlesController@indexUser')->name('articles');;
 Route::get('/articles/view/{article}', 'ArticlesController@showUser');
 
-Route::get('/products', 'ProductsController@indexUser');
+Route::get('/products', 'ProductsController@indexUser')->name('products');;
 Route::get('/products/view/{product}', 'ProductsController@showUser');
 
-Route::get('/food', 'FoodController@indexUser');
+Route::get('/food', 'FoodController@indexUser')->name('food');;
 Route::get('/food/view/{food}', 'FoodController@showUser');
 
 
@@ -55,7 +57,8 @@ Route::prefix('admin')->group(function () {
         Route::delete('/feedback', 'FeedbackController@destroy');
         Route::get('/pages/{page}', 'PagesController@renderAdmin')->name('page');
         Route::patch('/pages/{page}', 'PagesController@update');
-    
+        
+        Route::post('/status','StatusController@toggle');
         //CRUD
         Route::resources([
             '/articles' => 'ArticlesController',
@@ -64,6 +67,7 @@ Route::prefix('admin')->group(function () {
             '/news'=>'NewsController',
             '/food'=>'FoodController'
         ]);
+        
 
         //Delete Selected
         Route::delete('/articles','ArticlesController@destroySelected');
@@ -71,9 +75,13 @@ Route::prefix('admin')->group(function () {
         Route::delete('/products','ProductsController@destroySelected');
         Route::delete('/news','NewsController@destroySelected');
         Route::delete('/food','FoodController@destroySelected');
+
+        //Api for visitors count
+        Route::get('/statistics/visit', 'StatisticsController@visit');
+        Route::get('/statistics/rating', 'StatisticsController@rating');
+
     });
 });
 
 
-//Api for visitors count
-Route::get('/getVistorsCount', 'VisitCounterController@respond');
+

@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Searchable\Searchable;
-use Spatie\Searchable\SearchResult;
 
-
-class Event extends Model implements Searchable
+class Event extends Model
 {
     use HasFactory;
     protected $guarded=[];
     
+    public static $searchableType = 'События:';
+
     public function userPath(){
         return "/events/view/{$this->id}";
     }
@@ -22,12 +21,4 @@ class Event extends Model implements Searchable
     }
 
 
-    public function getSearchResult(): SearchResult
-    {
-        return new SearchResult(
-           $this,
-           $this->title,
-           'asdas'
-        );
-    }
 }

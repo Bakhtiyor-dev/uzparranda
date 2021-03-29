@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Searchable\Searchable;
-use Spatie\Searchable\SearchResult;
 
-class Article extends Model implements Searchable
+
+class Article extends Model
 {
     use HasFactory;
     protected $guarded=[];
 
+    public static $searchableType = 'Cтатьи:';
+    
     public function userPath(){
         return "/articles/view/{$this->id}";
     }
@@ -20,11 +21,4 @@ class Article extends Model implements Searchable
         return "/admin/articles/{$this->id}";
     }
 
-    public function getSearchResult(): SearchResult
-    {    
-        return new SearchResult(
-           $this,
-           $this->body
-        );
-    }
 }
